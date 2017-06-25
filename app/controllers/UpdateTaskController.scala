@@ -31,7 +31,7 @@ class UpdateTaskController @Inject()(val messagesApi: MessagesApi)
         formWithErrors => BadRequest(views.html.edit(formWithErrors)), { model =>
           implicit val session = AutoSession
           val result = Task
-            .updateById(model.id.get)
+            .updateById(model.id.getOrElse(0))
             .withAttributes(
               'content -> model.content
             )
