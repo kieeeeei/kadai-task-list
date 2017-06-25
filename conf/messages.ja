@@ -1,0 +1,12 @@
+Id=Id
+Title=タイトル
+Task=タスク
+CreateTask=タスク新規作成
+UpdateTask=タスク偏執
+DeleteTask=タスク削除
+GetTasks=タスク一覧
+GetTask=タスク詳細
+
+CreateTaskError=タスク作成エラーが発生しました。
+UpdateTaskError=タスク更新エラーが発生しました。
+DeleteTaskError=タスク削除エラーが発生しました。
