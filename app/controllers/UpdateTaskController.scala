@@ -17,7 +17,7 @@ class UpdateTaskController @Inject()(val messagesApi: MessagesApi)
   def index(taskId: Long): Action[AnyContent] = Action { implicit request =>
     Task.findById(taskId) match {
       case Some(task) => {
-        val filledForm = form.fill(TaskForm(task.id, task.content))
+        val filledForm = form.fill(TaskForm(task.id, task.status.getOrElse(""), task.content))
         Ok(views.html.edit(filledForm))
       }
       case None => NotFound("can not find taskId")
@@ -33,6 +33,7 @@ class UpdateTaskController @Inject()(val messagesApi: MessagesApi)
           val result = Task
             .updateById(model.id.getOrElse(0))
             .withAttributes(
+              'status  -> model.status,
               'content -> model.content
             )
           if (result > 0)
